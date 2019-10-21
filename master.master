@@ -1,0 +1,147 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="master.master.cs" Inherits="master" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+           body
+        {
+             background-image:url(背景/495c243057465ab.jpg);
+             }
+        .style1
+        {
+            width: 100%;
+            margin-bottom: 0px;
+        }
+        .style2
+        {
+        }
+        .style6
+        {
+            width: 1209px;
+            margin-bottom: 0px;
+        }
+        .style9
+        {
+            width: 248px;
+        }
+        .style10
+        {
+            width: 302px;
+        }
+        .style11
+        {
+            width: 248px;
+            height: 28px;
+        }
+        .style12
+        {
+            width: 302px;
+            height: 28px;
+        }
+        .style13
+        {
+            font-size: x-small;
+        }
+        </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <table class="style6">
+        <tr>
+            <td class="style9">
+                &nbsp;</td>
+            <td class="style10">
+                &nbsp;</td>
+            <td class="style10">
+                &nbsp;</td>
+            <td class="style10">
+                &nbsp;</td>
+        </tr>
+        <tr>
+            <td class="style11">
+                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+            </td>
+            <td class="style12">
+                &nbsp;</td>
+            <td class="style12">
+                </td>
+            <td class="style12">
+            <a href ="login.aspx">LOG OUT</a>
+                &nbsp;</td>
+        </tr>
+        <tr>
+            <td class="style9" align="center">
+                <asp:Label ID="Label4" runat="server" Text="STOREID:"></asp:Label>
+            </td>
+            <td class="style10">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder4" runat="server">
+                </asp:ContentPlaceHolder>
+            </td>
+            <td class="style10">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder5" runat="server">
+                </asp:ContentPlaceHolder>
+            </td>
+            <td align="center" class="style10">
+                
+                <asp:Label ID="Label5" runat="server" Text="STUFFID:"></asp:Label>
+                
+            </td>
+        </tr>
+        <tr>
+            <td align="center" colspan="4" style="font-family: 方正粗黑宋简体; font-size: 40px">
+                <table 
+                    class="style1">
+                    <tr>
+                        <td align="center" style="font-size: x-large">
+                            HAPPINESS <span class="style13">DRUGSTORE MANAGEMENT SYSTEM</span></td>
+                        <td>
+                            &nbsp;</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" colspan="4" style="font-family: 方正粗黑宋简体; font-size: 40px">
+                &nbsp;</td>
+        </tr>
+        <tr>
+            <td class="style9">
+                <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
+            </td>
+            <td colspan="3">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                </asp:ContentPlaceHolder>
+            </td>
+        </tr>
+        <tr>
+            <td class="style9">
+                <asp:TreeView ID="TreeView1" runat="server" DataSourceID="SiteMapDataSource1" 
+                                ExpandImageToolTip="" ExpandDepth="1" 
+                    onselectednodechanged="TreeView1_SelectedNodeChanged">
+                </asp:TreeView>
+            </td>
+            <td class="style2" colspan="3">
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+            </td>
+        </tr>
+        <tr>
+            <td class="style9">
+                &nbsp;</td>
+            <td class="style2" colspan="3">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
+                </asp:ContentPlaceHolder>
+            </td>
+        </tr>
+        </table>
+    <div>
+    </div>
+    </form>
+</body>
+</html>

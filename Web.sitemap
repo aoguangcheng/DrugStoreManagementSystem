@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="HomePage.aspx" title="ReturnToHomePage"  description="点此返回首页">
+    <siteMapNode url="Orderform.aspx" title="OrderForm" descripition="点次查看订单信息">
+    </siteMapNode>
+
+    <siteMapNode url="OrderDetails.aspx" title="OrderDetails"  description="点此返回首页">
+      </siteMapNode>
+  <siteMapNode title="LogisticsManagement"  description="点此查看后勤管理">
+
+    <siteMapNode url="Warehouse.aspx" title="Warehouse"  description="点此查看库存" />
+    <siteMapNode url="Stuff.aspx" title="Stuff"  description="点此查看员工信息" />
+  </siteMapNode>
+
+    <siteMapNode  title ="MemberManagement">
+      <siteMapNode url="Member.aspx" title="Member" description ="点此查看会员信息" />
+    </siteMapNode>
+
+    <siteMapNode title ="FactoryAndStore" description ="">
+      <siteMapNode url="Factory.aspx" title ="Factory" description ="点此查看供应商信息" />
+      <siteMapNode url="Store.aspx" title="Store" description ="点此查看门店信息" />
+    </siteMapNode>
+    <siteMapNode url="ContactDevelopers .aspx" title="ContactDevelopers " description ="点此联系开发者" />
+  </siteMapNode>
+
+
+</siteMap>

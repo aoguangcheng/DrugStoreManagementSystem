@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DSMS" Class="DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=DSMS;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DSMSConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.drug" Member="drug">
+    <Type Name="drug">
+      <Column Name="drugid" Type="System.String" DbType="VarChar(32) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="factoryid" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="batchnumber" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="drugname" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="drugtype" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="drugstandard" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="producedate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="qualitytime" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="primecost" Type="System.Single" DbType="Real NOT NULL" CanBeNull="false" />
+      <Column Name="price" Type="System.Single" DbType="Real NOT NULL" CanBeNull="false" />
+      <Column Name="more" Type="System.String" DbType="VarChar(99)" CanBeNull="true" />
+      <Association Name="drug_orderDetails" Member="orderDetails" ThisKey="drugid" OtherKey="drugid" Type="orderDetails" />
+      <Association Name="factory_drug" Member="factory" ThisKey="factoryid" OtherKey="factoryid" Type="factory" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.drugstore" Member="drugstore">
+    <Type Name="drugstore">
+      <Column Name="drugstoreid" Type="System.String" DbType="VarChar(32) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="drugstorename" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="drugstoreaddress" Type="System.String" DbType="VarChar(63) NOT NULL" CanBeNull="false" />
+      <Column Name="drugstorephonenumber" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+      <Association Name="drugstore_orderform" Member="orderform" ThisKey="drugstoreid" OtherKey="drugstoreid" Type="orderform" />
+      <Association Name="drugstore_stuff" Member="stuff" ThisKey="drugstoreid" OtherKey="drugstoreid" Type="stuff" />
+    </Type>
+  </Table>
+  <Table Name="dbo.factory" Member="factory">
+    <Type Name="factory">
+      <Column Name="factoryid" Type="System.String" DbType="VarChar(32) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="factoryname" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="factoryaddress" Type="System.String" DbType="VarChar(63)" CanBeNull="true" />
+      <Column Name="factoryphonenumber" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+      <Association Name="factory_drug" Member="drug" ThisKey="factoryid" OtherKey="factoryid" Type="drug" />
+    </Type>
+  </Table>
+  <Table Name="dbo.member" Member="member">
+    <Type Name="member">
+      <Column Name="memberid" Type="System.String" DbType="VarChar(32) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="membername" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="phonenumber" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="credits" Type="System.Single" DbType="Real NOT NULL" CanBeNull="false" />
+      <Association Name="member_orderform" Member="orderform" ThisKey="memberid" OtherKey="memberid" Type="orderform" />
+    </Type>
+  </Table>
+  <Table Name="dbo.orderDetails" Member="orderDetails">
+    <Type Name="orderDetails">
+      <Column Name="datailid" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="orderformid" Type="System.String" DbType="VarChar(32) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="drugid" Type="System.String" DbType="VarChar(32) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="discount" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="drugnumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="drug_orderDetails" Member="drug" ThisKey="drugid" OtherKey="drugid" Type="drug" IsForeignKey="true" />
+      <Association Name="orderform_orderDetails" Member="orderform" ThisKey="orderformid" OtherKey="orderformid" Type="orderform" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.orderform" Member="orderform">
+    <Type Name="orderform">
+      <Column Name="orderformid" Type="System.String" DbType="VarChar(32) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="stuffid" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="drugstoreid" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="memberid" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="saletime" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="totalmoney" Type="System.Single" DbType="Real NOT NULL" CanBeNull="false" />
+      <Association Name="orderform_orderDetails" Member="orderDetails" ThisKey="orderformid" OtherKey="orderformid" Type="orderDetails" />
+      <Association Name="drugstore_orderform" Member="drugstore" ThisKey="drugstoreid" OtherKey="drugstoreid" Type="drugstore" IsForeignKey="true" />
+      <Association Name="member_orderform" Member="member" ThisKey="memberid" OtherKey="memberid" Type="member" IsForeignKey="true" />
+      <Association Name="stuff_orderform" Member="stuff" ThisKey="stuffid" OtherKey="stuffid" Type="stuff" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.warehouse" Member="warehouse">
+    <Type Name="warehouse">
+      <Column Name="drugstoreid" Type="System.String" DbType="VarChar(32) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="drugid" Type="System.String" DbType="VarChar(32) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="drugamount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[log]" Member="log">
+    <Type Name="log">
+      <Column Name="stuffid" Type="System.String" DbType="NChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="logindate" Type="System.String" DbType="NChar(32) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ipaddress" Type="System.String" DbType="NChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="hostname" Type="System.String" DbType="NChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="loginstatus" Type="System.String" DbType="NChar(32) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.stuff" Member="stuff">
+    <Type Name="stuff">
+      <Column Name="stuffid" Type="System.String" DbType="VarChar(32) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="drugstoreid" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="stuffname" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="stuffsex" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="stuffphonenumber" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="stufftype" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="stuff_orderform" Member="orderform" ThisKey="stuffid" OtherKey="stuffid" Type="orderform" />
+      <Association Name="drugstore_stuff" Member="drugstore" ThisKey="drugstoreid" OtherKey="drugstoreid" Type="drugstore" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
